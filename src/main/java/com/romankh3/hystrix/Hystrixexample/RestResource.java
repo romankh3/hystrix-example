@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/rest")
 public class RestResource {
 
-    @HystrixCommand(fallbackMethod = "fallBackMethod",
+    @HystrixCommand(fallbackMethod = "fallBackMethodHello",
                     commandKey = "hello",
                     groupKey = "hello")
     @GetMapping("/hello")
@@ -22,7 +22,7 @@ public class RestResource {
         return "Hello world!";
     }
 
-    @HystrixCommand(fallbackMethod = "fallBackMethod",
+    @HystrixCommand(fallbackMethod = "fallBackMethodHelloYT",
             commandKey = "helloYT",
             groupKey = "helloYT")
     @GetMapping("/helloYT")
@@ -34,9 +34,12 @@ public class RestResource {
         return "Hello world Youtube!";
     }
 
-    public String fallBackMethod() {
+    // this method should be the same as the main method expect the name.
+    public String fallBackMethodHello() {
         return "FallBack Call";
     }
 
-
+    public String fallBackMethodHelloYT() {
+        return "FallBacl Call YT";
+    }
 }
