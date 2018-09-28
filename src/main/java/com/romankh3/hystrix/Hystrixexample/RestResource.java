@@ -22,8 +22,20 @@ public class RestResource {
         return "Hello world!";
     }
 
+    @HystrixCommand(fallbackMethod = "fallBackMethod",
+            commandKey = "helloYT",
+            groupKey = "helloYT")
+    @GetMapping("/helloYT")
+    public String helloYT() {
+        // something going wrong
+        if(RandomUtils.nextBoolean()) {
+            throw new RuntimeException("failed!");
+        }
+        return "Hello world Youtube!";
+    }
+
     public String fallBackMethod() {
-        return "fallBackHello";
+        return "FallBack Call";
     }
 
 
