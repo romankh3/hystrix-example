@@ -40,6 +40,6 @@ public class RestResource {
     }
 
     public String fallBackMethodHelloYT() {
-        return "FallBacl Call YT";
+        return "FallBack Call YT";
     }
 }
